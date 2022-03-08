@@ -1,6 +1,4 @@
-
 import de.bezier.guido.*;
-//Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 private final static int NUM_ROWS = 10;
 private final static int NUM_COLS = 10;
 private MSButton[][] buttons; //2d array of minesweeper buttons
@@ -134,10 +132,12 @@ public class MSButton
   {
     clicked = true;
     if (mouseButton == RIGHT) {
-      if (flagged == true) {
-        flagged = false;
-      } else if (flagged == false) {
+      if (flagged == false) {
         flagged = true;
+      } else if (flagged == true) {
+        flagged = false;
+      }
+      if (flagged == false){
         clicked = false;
       }
     } else if (mines.contains(buttons[myRow][myCol]))
@@ -148,47 +148,38 @@ public class MSButton
       if (isValid(myRow-1, myCol-1) == true &&
         buttons[myRow - 1][myCol - 1].clicked == false) {
         buttons[myRow - 1][myCol - 1].mousePressed();
-        //buttons[myRow - 1][myCol - 1].flagged = true;
       }
       if (isValid(myRow-1, myCol) == true &&
         buttons[myRow - 1][myCol].clicked == false) {
         buttons[myRow - 1][myCol].mousePressed();
-        // buttons[myRow - 1][myCol].flagged = true;
       }
       if (isValid(myRow-1, myCol+1) == true &&
         buttons[myRow - 1][myCol + 1].clicked == false) {
         buttons[myRow - 1][myCol + 1].mousePressed();
-        //  buttons[myRow - 1][myCol + 1].flagged = true;
       }
       if (isValid(myRow, myCol-1) == true &&
         buttons[myRow][myCol - 1].clicked == false) {
         buttons[myRow][myCol - 1].mousePressed();
-        //   buttons[myRow][myCol - 1].flagged = true;
       }
       if (isValid(myRow, myCol) == true &&
         buttons[myRow][myCol].clicked == false) {
         buttons[myRow][myCol].mousePressed();
-        //   buttons[myRow][myCol - 1].flagged = true;
       }
       if (isValid(myRow, myCol+1) == true &&
         buttons[myRow ][myCol + 1].clicked == false) {
         buttons[myRow][myCol + 1].mousePressed();
-        //   buttons[myRow][myCol + 1].flagged = true;
       }
       if (isValid(myRow+1, myCol-1) == true &&
         buttons[myRow + 1][myCol - 1].clicked == false) {
         buttons[myRow + 1][myCol - 1].mousePressed();
-        //   buttons[myRow + 1][myCol - 1].flagged = true;
       }
       if (isValid(myRow+1, myCol) == true &&
         buttons[myRow + 1][myCol].clicked == false) {
         buttons[myRow + 1][myCol].mousePressed();
-        //  buttons[myRow + 1][myCol].flagged = true;
       }
       if (isValid(myRow + 1, myCol + 1) == true &&
         buttons[myRow + 1][myCol + 1].clicked == false) {
         buttons[myRow + 1][myCol + 1].mousePressed();
-        //  buttons[myRow + 1][myCol + 1].flagged = true;
       }
     }
   }
@@ -218,4 +209,4 @@ public class MSButton
   {
     return flagged;
   }
-}  
+}    
